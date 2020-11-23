@@ -6,7 +6,7 @@
     "architecture": {	
         "64bit": {	
             "url": "http://download.macromedia.com/pub/coldfusion/java/java8/8u271/jdk/jdk-8u271-windows-x64.zip",	
-            "hash": "330a6396fcc97c57a951170bb9ac5a00b75974da8f002cb7e62fdf09d15018c5"	
+            "hash": "E3F882D719F32CD4E3E9BD7F41FCD7FFDB052E70C18B3085ECEF9A6D608F80A6"	
         }	
     },
     "extract_to": "tmp",	
