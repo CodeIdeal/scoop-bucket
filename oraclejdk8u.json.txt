@@ -1,0 +1,38 @@
+{	
+    "description": "Oracle JDK 8 (PSU)",	
+    "homepage": "https://www.adobe.com/support/coldfusion/downloads.html",	
+    "version": "8u271",	
+    "license": "https://www.adobe.com/support/coldfusion/downloads.html",	
+    "architecture": {	
+        "64bit": {	
+            "url": "http://download.macromedia.com/pub/coldfusion/java/java8/8u271/jdk/jdk-8u271-windows-x64.zip",	
+            "hash": "330a6396fcc97c57a951170bb9ac5a00b75974da8f002cb7e62fdf09d15018c5"	
+        }	
+    },
+    "extract_to": "tmp",	
+    "installer": {	
+        "script": [	
+            "# Java Source (src.zip)",	
+            "extract_7zip \"$dir\\tmp\\.rsrc\\1033\\JAVA_CAB9\\110\" \"$dir\"",	
+            "# JDK (tools.zip)",	
+            "extract_7zip \"$dir\\tmp\\.rsrc\\1033\\JAVA_CAB10\\111\" \"$dir\\tmp\"",	
+            "extract_7zip \"$dir\\tmp\\tools.zip\" \"$dir\"",	
+            "# Copyright (COPYRIGHT)",	
+            "extract_7zip \"$dir\\tmp\\.rsrc\\1033\\JAVA_CAB11\\112\" \"$dir\"",	
+            "# Convert .pack to .jar, and remove .pack",	
+            "pushd \"$dir\"",	
+            "ls \"$dir\" -recurse | ? name -match '^[^_].*?\\.(?i)pack$' | % {",	
+            "    $name = $_.fullname -replace '\\.(?i)pack$', ''",	
+            "    $pack = \"$name.pack\"",	
+            "    $jar = \"$name.jar\"",	
+            "    & \"bin\\unpack200.exe\" \"-r\" \"$pack\" \"$jar\"",	
+            "}",	
+            "rm -r tmp | out-null",	
+            "popd"	
+        ]	
+    },	
+    "env_add_path": "bin",	
+    "env_set": {	
+        "JAVA_HOME": "$dir"	
+    }
+}
